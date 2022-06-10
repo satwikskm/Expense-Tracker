@@ -75,10 +75,14 @@ const updateLocalStorage = function(){
 
 const removeTransaction = function(id){
     console.log(id)
-    dummyTransactions = dummyTransactions.filter((i)=>i.id !== id)
-    console.log(dummyTransactions.filter((i)=>i.id !== id))
+    
+    transactions = transactions.filter((i)=>i.id !== id)
+    console.log(transactions)
+    // console.log(transactions.filter((i)=>i.id !== id))
     updateValue();
     updateLocalStorage
+    init()
+    
 }
 
 form.addEventListener('submit',(e)=>{
@@ -112,6 +116,13 @@ form.addEventListener('submit',(e)=>{
     
     
 })
+
+function init() {
+    list.innerHTML = '';
+  
+    transactions.forEach(updateDom);
+    updateValue();
+  }
 //updateValue();
 // dummyTransactions.forEach((a)=>updateDom(a))
 
